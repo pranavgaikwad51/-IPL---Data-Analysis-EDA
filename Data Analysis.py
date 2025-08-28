@@ -129,6 +129,107 @@ matches_df.groupby('winner')['venue'].value_counts().idxmax()
 comparosion_inning_wise = matches_df.groupby(['winner','inning']).size().reset_index(name='wins')
 comparosion_inning_wise
 
-16. Which team has scored the most number of 200+ scores?
+# 16. Which team has scored the most number of 200+ scores?
+
+df = ball_df.groupby(['id','batting_team'])['total_runs'].sum().reset_index()
+totals = df[df['total_runs']>=200]
+team_run_more_than_200 = totals.groupby('batting_team')['total_runs'].value_counts()
+print(team_run_more_than_200.idxmax() , team_run_more_than_200.max())
+
+
+# 17. Which team has conceded 200+ scores the most?
+team_run_more_than_200.idxmax()
+
+# 18. What was the highest run scored by a team in a single match?
+
+totals.max()
+
+# 19. Which is the biggest win in terms of run margin?
+# Find the row with maximum win margin
+biggest_win = matches_df.loc[matches_df['result_margin'].idxmax()]
+
+print(biggest_win['winner'], biggest_win['result_margin'])
+
+
+# 20. Which batsmen have played the most number of balls?
+
+most_ball_played = ball_df.groupby('batsman')['ball'].idxmax().sort_values(ascending=False)
+print(most_ball_played.idxmax())
+
+# 21. Who are the leading run-scorers of all time?
+
+leading_run_score = ball_df.groupby('batsman')['batsman_runs'].value_counts().sort_values(ascending=False)
+print(leading_run_score.idxmax(),leading_run_score.max())
+
+# 22. Who has hit the most number of 4's?
+
+fours = ball_df[ball_df['batsman_runs']==4]
+fours_max = fours['batsman'].value_counts()
+print(fours_max.idxmax(),fours_max.max())
+
+# 23. Who has hit the most number of 6's?
+
+six = ball_df[ball_df['batsman_runs']==6]
+most_six = six['batsman'].value_counts()
+print(most_six.idxmax(), most_six.max())
+
+# 24. Who has the highest strike rate?
+
+# Exclude wides because they don’t count as a legal ball faced
+valid_balls = ball_df[ball_df['extra_runs']==0]
+
+# Step 1: Runs scored per batsman
+runs = valid_balls.groupby('batsman')['total_runs'].sum()
+
+# Step 2: Balls faced per batsman
+balls = valid_balls.groupby('batsman').size()
+
+# Step 3: Strike rate calculation
+strike_rate = (runs / balls * 100).reset_index(name='strike_rate')
+
+highest_sr = strike_rate.sort_values(by='strike_rate', ascending=False).head(1)
+highest_sr
+
+# 25. Who is the leading wicket-taker?
+wicket = ball_df[ball_df['is_wicket']==1]
+leading_wicket_taker = wicket['bowler'].value_counts()
+
+
+print(leading_wicket_taker.idxmax(), leading_wicket_taker.max())
+
+# both work same but second one give without run outs values
+
+wicket = ball_df[ball_df['is_wicket']==1]
+wicket = wicket[~wicket['dismissal_kind'].isin(['run out','retired hurt','obstructing the field'])]
+
+leading_wicket_taker = wicket['bowler'].value_counts()
+
+print(leading_wicket_taker.idxmax(), leading_wicket_taker.max())
+
+
+# 26. Which stadium has hosted the most number of matches?
+
+most_number_of_matches = matches_df['venue'].value_counts()
+print(most_number_of_matches.idxmax() , most_number_of_matches.max())
+
+
+# 27. Who has won the most MOM awards?
+
+most_mom = matches_df['player_of_match'].value_counts()
+print(most_mom.idxmax(), most_mom.max())
+
+# 28. What is the count of fours hit in each season?
+
+four = matches_df.merge(ball_df[['id','total_runs','batsman_runs']])
+per_season  = four[four['batsman_runs']==4]
+four_per_season = per_season.groupby('season')['batsman_runs'].value_counts()
+four_per_season
+
+# 29. What is the count of sixes hit in each season?
+six = four[four['batsman_runs']==6]
+six_per_season = six.groupby('season')['batsman_runs'].value_counts()
+six_per_season
+
+# 30. What is the count of runs scored from boundaries in each season?
 
 
