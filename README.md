@@ -1,4 +1,4 @@
-# 🏏 IPL Data Analysis (2008–2020)
+ # 🏏 IPL Data Analysis (2008–2020)
 
 This project explores **IPL Ball-by-Ball (2008–2020)** and **Match datasets** to uncover insights about team performances, players, venues, and toss decisions. Using **Python, Pandas, Matplotlib, and Seaborn**, we answer 35+ cricket analytics questions with visualizations.  
 
@@ -25,7 +25,7 @@ This project explores **IPL Ball-by-Ball (2008–2020)** and **Match datasets** 
 ### 1. Matches Played Per Season
 📈 The number of matches varied across seasons, peaking in **2013** with 76 matches.  
 
-![Matches per season](images/Question1.png)
+![Matches per season](image/Question1.png)
 
 
 
