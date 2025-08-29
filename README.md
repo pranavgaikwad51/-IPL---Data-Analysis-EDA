@@ -28,7 +28,6 @@ git add images/Question7.png
 git commit -m "Add Question7 image"
 git push
 
-![Question 7](images/Question7.png)
 
 
 
@@ -38,7 +37,7 @@ git push
 ### 2. Toss Decisions Across Seasons
 🟢 Teams initially preferred to **bat** after winning the toss, but after 2014 the preference shifted strongly towards **fielding**.  
 
-![Toss Decision by Season](images/Question7.png)
+
 
 ---
 
