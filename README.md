@@ -24,6 +24,9 @@ This project explores **IPL Ball-by-Ball (2008–2020)** and **Match datasets** 
 
 ### 1. Matches Played Per Season
 📈 The number of matches varied across seasons, peaking in **2013** with 76 matches.  
+git add images/Question7.png
+git commit -m "Add Question7 image"
+git push
 
 ![Question 7](images/Question7.png)
 
