@@ -231,5 +231,35 @@ six_per_season = six.groupby('season')['batsman_runs'].value_counts()
 six_per_season
 
 # 30. What is the count of runs scored from boundaries in each season?
+run_scored_each_season = per_season.groupby('season')['batsman_runs'].sum()
+run_scored_each_season
+
+# 31. What is the run contribution from boundaries in each season?
+
+run_contribution_from_boundries = run_scored_each_season.copy()
+run_contribution_from_boundries
+
+# 32. Which team has scored the most runs in the first 6 overs?
+bat=ball_df[ball_df['over']<=6]
+most_run_6over = bat.groupby('batting_team')['total_runs'].value_counts()
+print(most_run_6over.idxmax(),most_run_6over.max())
+
+# 33. Which team has scored the most runs in the last 4 overs?
+
+most_four =  ball_df[ball_df['over']>=16]
+most_run_4_four = most_four.groupby('batting_team')['total_runs'].value_counts()
+print(most_run_4_four.idxmax(), most_run_4_four.max())
+
+# 34. Which team has the best scoring run-rate in the first 6 overs?
+
+first_6 = ball_df[ball_df['over']<=6]
+best_run_rate_first_6over = first_6.grouaby('batting_team')['total_runs'].value_counts()
+print(best_run_rate_first_6over.idxmax() , best_run_rate_first_6over.max())
+
+# 35. Which team has the best scoring run-rate in the last 4 overs?
+last_4 = ball_df[ball_df['over']>=16]
+best_run_rate_last_4over = last_4.groupby('batting_team')['total_runs'].value_counts()
+print(best_run_rate_last_4over.idxmax() , best_run_rate_last_4over.max())
+
 
 
