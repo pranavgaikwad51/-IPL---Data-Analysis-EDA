@@ -98,7 +98,6 @@ git push
 ├── IPL Matches 2008-2020.csv
 ├── analysis.ipynb # Jupyter notebook with all 35 Q&A analysis
 ├── README.md # Project documentation
-├── images/ # Visualizations and plots
 
 
 ---
