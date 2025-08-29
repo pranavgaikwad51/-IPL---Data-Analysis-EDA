@@ -27,6 +27,8 @@ This project explores **IPL Ball-by-Ball (2008–2020)** and **Match datasets** 
 
 ![Matches per season](images/Question1.png)
 
+
+
 ---
 
 ### 2. Toss Decisions Across Seasons
